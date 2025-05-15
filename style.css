@@ -1,0 +1,984 @@
+:root {
+    /* Fonts, Transitions, Config */
+    --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-family-britannica: Georgia, 'Times New Roman', Times, serif;
+    --font-family-britannica-sans: Arial, Helvetica, sans-serif;
+    --transition-speed: 0.3s;
+    --transition-ease: ease-in-out;
+    --content-max-width: 850px; /* Default chat content width */
+
+    /* --- Light Mode Colors (Default Chat) --- */
+    --bg-primary-light: #ffffff;
+    --bg-secondary-light: #f0f2f5;
+    --bg-tertiary-light: #e4e6eb;
+    --text-primary-light: #050505;
+    --text-secondary-light: #65676b;
+    --text-tertiary-light: #8a8d91;
+    --accent-primary-light: #007bff;
+    --accent-secondary-light: #0056b3;
+    --border-color-light: #d1d5db;
+    --icon-color-light: #65676b;
+    --button-bg-light: #e4e6eb;
+    --button-hover-bg-light: #d1d5db;
+    --user-message-bg-light: var(--accent-primary-light);
+    --user-message-text-light: #ffffff;
+    --ai-message-bg-light: var(--bg-tertiary-light);
+    --ai-message-text-light: var(--text-primary-light);
+    --shadow-color-light: rgba(0, 0, 0, 0.08);
+    --toggle-icon-light: #050505; /* Icon color on light bg */
+    --example-prompt-bg-light: #ffffff;
+    --example-prompt-text-light: #374151;
+    --example-prompt-hover-bg-light: #f9fafb;
+    --example-prompt-border-light: #e5e7eb;
+    --focus-ring-color-light: rgba(0, 123, 255, 0.3);
+    --scrollbar-thumb-light: #c1c7d0;
+    --scrollbar-track-light: #f0f2f5;
+    --danger-color-light: #dc3545;
+    --danger-hover-color-light: #c82333;
+    --code-bg-light: #f1f3f5;
+    --code-border-light: #dee2e6;
+    --select-bg-light: var(--bg-secondary-light);
+
+    /* --- Dark Mode Colors (Default Chat) --- */
+    --bg-primary-dark: #1c1c1e;
+    --bg-secondary-dark: #111112;
+    --bg-tertiary-dark: #2c2c2e;
+    --text-primary-dark: #e4e6eb;
+    --text-secondary-dark: #b0b3b8;
+    --text-tertiary-dark: #8a8d91;
+    --accent-primary-dark: #0a84ff;
+    --accent-secondary-dark: #3f9dff;
+    --border-color-dark: #3a3a3c;
+    --icon-color-dark: #b0b3b8;
+    --button-bg-dark: #3a3a3c;
+    --button-hover-bg-dark: #48484a;
+    --user-message-bg-dark: var(--accent-primary-dark);
+    --user-message-text-dark: #ffffff;
+    --ai-message-bg-dark: var(--bg-tertiary-dark);
+    --ai-message-text-dark: var(--text-primary-dark);
+    --shadow-color-dark: rgba(0, 0, 0, 0.25);
+    --toggle-icon-dark: #e4e6eb; /* Icon color on dark bg */
+    --example-prompt-bg-dark: #2c2c2e;
+    --example-prompt-text-dark: #d1d5db;
+    --example-prompt-hover-bg-dark: #3a3a3c;
+    --example-prompt-border-dark: #4b4d4f;
+    --focus-ring-color-dark: rgba(10, 132, 255, 0.4);
+    --scrollbar-thumb-dark: #5a5a5e;
+    --scrollbar-track-dark: #2c2c2e;
+    --danger-color-dark: #ff453a;
+    --danger-hover-color-dark: #ff6b61;
+    --code-bg-dark: #282a36;
+    --code-border-dark: #44475a;
+    --select-bg-dark: var(--bg-tertiary-dark);
+
+    /* Apply Theme Variables for Default View - Start with Light */
+    --bg-primary: var(--bg-primary-light);
+    --bg-secondary: var(--bg-secondary-light);
+    --bg-tertiary: var(--bg-tertiary-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --text-tertiary: var(--text-tertiary-light);
+    --accent-primary: var(--accent-primary-light);
+    --accent-secondary: var(--accent-secondary-light);
+    --border-color: var(--border-color-light);
+    --icon-color: var(--icon-color-light);
+    --button-bg: var(--button-bg-light);
+    --button-hover-bg: var(--button-hover-bg-light);
+    --user-message-bg: var(--user-message-bg-light);
+    --user-message-text: var(--user-message-text-light);
+    --ai-message-bg: var(--ai-message-bg-light);
+    --ai-message-text: var(--ai-message-text-light);
+    --shadow-color: var(--shadow-color-light);
+    --toggle-icon: var(--toggle-icon-light);
+    --example-prompt-bg: var(--example-prompt-bg-light);
+    --example-prompt-text: var(--example-prompt-text-light);
+    --example-prompt-hover-bg: var(--example-prompt-hover-bg-light);
+    --example-prompt-border: var(--example-prompt-border-light);
+    --focus-ring-color: var(--focus-ring-color-light);
+    --scrollbar-thumb: var(--scrollbar-thumb-light);
+    --scrollbar-track: var(--scrollbar-track-light);
+    --danger-color: var(--danger-color-light);
+    --danger-hover-color: var(--danger-hover-color-light);
+    --code-bg: var(--code-bg-light);
+    --code-border: var(--code-border-light);
+    --select-bg: var(--select-bg-light);
+}
+
+body.dark-mode {
+    /* Apply Dark Mode Variables */
+    --bg-primary: var(--bg-primary-dark);
+    --bg-secondary: var(--bg-secondary-dark);
+    --bg-tertiary: var(--bg-tertiary-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --text-tertiary: var(--text-tertiary-dark);
+    --accent-primary: var(--accent-primary-dark);
+    --accent-secondary: var(--accent-secondary-dark);
+    --border-color: var(--border-color-dark);
+    --icon-color: var(--icon-color-dark);
+    --button-bg: var(--button-bg-dark);
+    --button-hover-bg: var(--button-hover-bg-dark);
+    --user-message-bg: var(--user-message-bg-dark);
+    --user-message-text: var(--user-message-text-dark);
+    --ai-message-bg: var(--ai-message-bg-dark);
+    --ai-message-text: var(--ai-message-text-dark);
+    --shadow-color: var(--shadow-color-dark);
+    --toggle-icon: var(--toggle-icon-dark);
+    --example-prompt-bg: var(--example-prompt-bg-dark);
+    --example-prompt-text: var(--example-prompt-text-dark);
+    --example-prompt-hover-bg: var(--example-prompt-hover-bg-dark);
+    --example-prompt-border: var(--example-prompt-border-dark);
+    --focus-ring-color: var(--focus-ring-color-dark);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark);
+    --scrollbar-track: var(--scrollbar-track-dark);
+    --danger-color: var(--danger-color-dark);
+    --danger-hover-color: var(--danger-hover-color-dark);
+    --code-bg: var(--code-bg-dark);
+    --code-border: var(--code-border-dark);
+    --select-bg: var(--select-bg-dark);
+}
+
+/* General Body */
+body {
+    margin: 0;
+    font-family: var(--font-family-sans);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease);
+    overflow: hidden; /* Prevent body scroll */
+    display: block; /* Changed from flex to allow content flow */
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+/* Control Buttons */
+#controls-area {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    display: flex;
+    gap: 12px;
+}
+
+#new-chat-control {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1050;
+}
+
+/* Hide new chat button by default or in disguise mode */
+#chat-interface #new-chat-control,
+#britannica-disguise #new-chat-control {
+    /* Keep structure but hide */
+    display: none;
+}
+
+#new-chat-button,
+#emergency-button,
+#theme-toggle {
+    /* Shared styles using theme vars */
+    background-color: var(--button-bg);
+    color: var(--icon-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: background-color var(--transition-speed) var(--transition-ease),
+                color var(--transition-speed) var(--transition-ease),
+                transform 0.1s ease,
+                box-shadow var(--transition-speed) var(--transition-ease),
+                border-color var(--transition-speed) var(--transition-ease);
+}
+
+#emergency-button {
+    color: var(--danger-color);
+    border-color: transparent; /* Make border less prominent unless hovered/focused */
+    background-color: var(--button-bg);
+}
+
+#emergency-button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--danger-hover-color);
+    border-color: var(--danger-color); /* Show border on hover */
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+#new-chat-button:hover,
+#theme-toggle:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--text-primary); /* Slightly darker icon on hover */
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+#new-chat-button:active,
+#theme-toggle:active,
+#emergency-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 2px var(--shadow-color) inset;
+}
+
+#theme-toggle i {
+    color: var(--toggle-icon); /* Use specific variable for icon color */
+    transition: color var(--transition-speed) var(--transition-ease);
+}
+
+/* === Default Chat Interface Styles (#chat-interface) === */
+#chat-interface {
+    display: flex; /* Use flex for the main layout */
+    flex-direction: column; /* Stack log and input vertically */
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    background-color: var(--bg-secondary); /* Consistent background */
+    overflow: hidden; /* Prevent chat-interface scroll */
+}
+
+#chat-interface #chat-container {
+    flex-grow: 1; /* Take available space */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--content-max-width); /* Max width for content */
+    margin: 0 auto; /* Center the container */
+    overflow: hidden; /* Prevent container scroll */
+    padding-top: 80px; /* Space for fixed controls */
+}
+
+#chat-interface #chat-log {
+    flex-grow: 1; /* Allows log to take up space */
+    overflow-y: auto; /* Enable scrolling for chat messages */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); /* Firefox */
+    background-color: var(--bg-primary); /* Primary background for log area */
+    border-radius: 8px 8px 0 0; /* Slightly rounded top corners */
+    box-shadow: 0 -1px 3px var(--shadow-color); /* Subtle shadow */
+}
+
+#chat-interface #chat-log::-webkit-scrollbar {
+    width: 8px;
+}
+#chat-interface #chat-log::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 4px;
+}
+#chat-interface #chat-log::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 4px;
+    border: 2px solid var(--scrollbar-track); /* Creates padding around thumb */
+}
+#chat-interface #chat-log::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-secondary); /* Use a theme color */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+#chat-interface .message.fade-in {
+    animation: fadeIn 0.3s var(--transition-ease) forwards;
+}
+
+#chat-interface #initial-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Center vertically when empty */
+    transition: opacity 0.3s ease, max-height 0.3s ease; /* Smooth hide */
+    overflow: hidden;
+    max-height: 1000px; /* Start with enough height */
+}
+#chat-interface #initial-state.hidden {
+    /* Styles to smoothly hide the initial state */
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0; /* Remove gap when hidden */
+    pointer-events: none;
+}
+#chat-interface #initial-state-icon {
+    margin-bottom: 20px;
+    color: var(--accent-primary);
+}
+#chat-interface #initial-state-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+}
+#chat-interface #initial-state-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+}
+#chat-interface .example-prompt {
+    background-color: var(--example-prompt-bg);
+    color: var(--example-prompt-text);
+    border: 1px solid var(--example-prompt-border);
+    border-radius: 8px;
+    padding: 12px 15px;
+    font-size: 0.95em;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 7px;
+}
+#chat-interface .example-prompt:hover {
+    background-color: var(--example-prompt-hover-bg);
+    border-color: var(--accent-primary);
+}
+#chat-interface .example-prompt:active {
+    transform: scale(0.98);
+}
+
+#chat-interface .message {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 12px;
+    max-width: 85%; /* Limit message width */
+    opacity: 0; /* Start hidden for fade-in */
+    animation: fadeIn 0.3s ease forwards; /* Apply fade-in */
+}
+
+#chat-interface .user-message {
+    margin-left: auto; /* Align user messages to the right */
+    flex-direction: row-reverse; /* Put avatar after text */
+}
+
+#chat-interface .ai-message {
+    margin-right: auto; /* Align AI messages to the left */
+}
+
+#chat-interface .message .avatar {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--button-bg); /* Use button bg for consistency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--icon-color);
+    font-size: 16px;
+    box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+#chat-interface .message .text {
+    padding: 12px 18px;
+    border-radius: 20px;
+    line-height: 1.5;
+    word-wrap: break-word; /* Ensure long words break */
+    overflow-wrap: break-word;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    min-width: 40px; /* Ensure bubble has some width */
+    position: relative; /* For potential future pseudo-elements */
+}
+
+#chat-interface .user-message .text {
+    background-color: var(--user-message-bg);
+    color: var(--user-message-text);
+    border-bottom-right-radius: 5px; /* Slightly point towards avatar */
+}
+
+#chat-interface .user-message .avatar {
+    background-color: var(--accent-secondary); /* Different color for user avatar maybe? */
+    color: #fff;
+}
+
+#chat-interface .ai-message .text {
+    background-color: var(--ai-message-bg);
+    color: var(--ai-message-text);
+    border-bottom-left-radius: 5px; /* Slightly point towards avatar */
+}
+
+/* AI Message Markdown Styling */
+#chat-interface .ai-message .text strong { font-weight: 600; color: inherit; }
+#chat-interface .ai-message .text em { font-style: italic; }
+#chat-interface .ai-message .text a { color: var(--accent-primary); text-decoration: underline; }
+#chat-interface .ai-message .text a:hover { color: var(--accent-secondary); }
+#chat-interface .ai-message .text code:not(pre code) { /* Inline code */
+    background-color: var(--code-bg);
+    color: var(--text-secondary);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    border: 1px solid var(--code-border);
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+#chat-interface .ai-message .text pre { /* Code block */
+    background-color: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 12px;
+    margin: 10px 0;
+    overflow-x: auto; /* Allow horizontal scroll for long lines */
+    font-size: 0.9em;
+    line-height: 1.4;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+#chat-interface .ai-message .text pre::-webkit-scrollbar { height: 6px; }
+#chat-interface .ai-message .text pre::-webkit-scrollbar-track { background: var(--code-border); border-radius: 3px; }
+#chat-interface .ai-message .text pre::-webkit-scrollbar-thumb { background-color: var(--scrollbar-thumb); border-radius: 3px; }
+#chat-interface .ai-message .text pre code { /* Reset styles for code inside pre */
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-primary); /* Match text color inside code block */
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: inherit;
+    white-space: pre; /* Preserve whitespace */
+}
+#chat-interface .ai-message .text ul,
+#chat-interface .ai-message .text ol {
+    margin: 10px 0 10px 25px; /* Indent lists */
+    padding-left: 0; /* Remove default padding if any */
+}
+#chat-interface .ai-message .text li {
+    margin-bottom: 5px; /* Space between list items */
+}
+
+
+#chat-interface #input-area {
+    padding: 0 20px; /* Padding matches chat-log horizontal padding */
+    background-color: var(--bg-primary); /* Match log bg */
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.03); /* Subtle top shadow */
+    flex-shrink: 0; /* Prevent input area from shrinking */
+    border-radius: 0 0 8px 8px; /* Match log corners */
+}
+
+#chat-interface #input-elements-wrapper {
+    display: flex;
+    align-items: flex-end; /* Align items to bottom */
+    padding: 15px 0;
+    gap: 10px;
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto; /* Center within the input-area */
+    position: relative; /* For potential absolute elements */
+}
+
+#chat-interface #model-selector {
+    flex-shrink: 0; /* Don't shrink */
+    padding: 8px 12px;
+    height: 40px; /* Match button height */
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Less rounded than textarea/button */
+    background-color: var(--select-bg);
+    color: var(--text-secondary);
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    -webkit-appearance: none; /* Optional: for custom arrow styling */
+    -moz-appearance: none;
+    appearance: none;
+    /* Add background arrow if removing appearance */
+    /* background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); */
+    /* background-repeat: no-repeat; */
+    /* background-position: right 10px center; */
+    /* background-size: 10px; */
+    /* padding-right: 30px; Adjust padding if using custom arrow */
+}
+
+#chat-interface #model-selector:hover {
+    border-color: var(--text-secondary);
+}
+
+#chat-interface #model-selector:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+#chat-interface #userInput {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 20px; /* Pill shape */
+    padding: 10px 18px;
+    font-size: 1em;
+    line-height: 1.4;
+    resize: none; /* Disable manual resize handle */
+    overflow-y: auto; /* Allow scrolling if max-height is reached */
+    max-height: 150px; /* Limit height */
+    background-color: var(--bg-secondary); /* Slightly different bg */
+    color: var(--text-primary);
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+    /* Ensure height adjust works correctly */
+    box-sizing: border-box;
+    min-height: 40px; /* Match button height minimum */
+}
+#chat-interface #userInput::placeholder {
+    color: var(--text-tertiary);
+    opacity: 1; /* Ensure placeholder is visible */
+}
+#chat-interface #userInput:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+#chat-interface #send-button {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    color: #ffffff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+    opacity: 0.5; /* Dimmed when input is empty */
+}
+
+/* Enable send button based on textarea content - Adjusted selector for sibling */
+#chat-interface #userInput:not(:placeholder-shown) ~ #send-button,
+#chat-interface #userInput:focus ~ #send-button {
+    opacity: 1;
+}
+
+
+#chat-interface #send-button:hover {
+    background-color: var(--accent-secondary);
+}
+#chat-interface #send-button:active {
+    transform: scale(0.9);
+}
+#chat-interface #send-button:disabled {
+    background-color: var(--button-bg);
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+/* === End Default Chat Styles === */
+
+
+/* === Britannica Disguise Styles (#britannica-disguise) === */
+/* Using hardcoded dark theme for Britannica, independent of toggle */
+#britannica-disguise {
+    width: 100%;
+    height: 100vh;
+    background-color: #212121; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    font-family: var(--font-family-britannica-sans);
+    display: flex; /* Will be set to 'flex' by JS */
+    flex-direction: column;
+    overflow: hidden; /* Prevent scroll on the main container */
+    font-size: 14px; /* Base font size for disguise */
+    line-height: 1.5;
+}
+
+.bri-header {
+    background-color: #333;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    flex-shrink: 0;
+    border-bottom: 1px solid #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.bri-header-left, .bri-header-right { display: flex; align-items: center; }
+.bri-header-left { gap: 15px; }
+.bri-menu-button { background: none; border: none; color: #ccc; font-size: 20px; cursor: pointer; padding: 5px; }
+#bri-logo-link { text-decoration: none; cursor: pointer; }
+.bri-logo { height: 25px; width: auto; display: block; }
+.bri-nav { flex-grow: 1; display: flex; justify-content: center; align-items: center; gap: 25px; height: 100%; }
+.bri-nav a { color: #ccc; text-decoration: none; font-size: 0.9em; font-weight: 500; padding: 0 5px; height: 100%; display: flex; align-items: center; border-bottom: 2px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
+.bri-nav a:hover, .bri-nav a.active { color: #fff; border-bottom-color: #fff; }
+.bri-header-right { gap: 20px; }
+.bri-search-container { position: relative; display: flex; align-items: center; }
+#britannica-disguise #britannica-search {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 15px;
+    color: #e0e0e0;
+    padding: 6px 35px 6px 15px; /* Space for icon */
+    font-size: 0.9em;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+#britannica-disguise #britannica-search::placeholder { color: #888; }
+#britannica-disguise #britannica-search:focus { border-color: #666; }
+.bri-search-button { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #aaa; font-size: 14px; cursor: pointer; padding: 5px; }
+.bri-subscribe-button { background-color: #e67e22; color: #fff; border: none; border-radius: 4px; padding: 8px 15px; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: background-color 0.2s ease; }
+.bri-subscribe-button:hover { background-color: #d35400; }
+.bri-login { color: #ccc; text-decoration: none; font-size: 0.9em; display: flex; align-items: center; gap: 5px; }
+.bri-login i { font-size: 0.7em; }
+.bri-login:hover { color: #fff; }
+
+.bri-main-wrapper {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Prevent wrapper scroll, allow children */
+}
+
+.bri-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background-color: #2a2a2a;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #444;
+    scrollbar-width: thin;
+    scrollbar-color: #555 #2a2a2a;
+}
+.bri-sidebar::-webkit-scrollbar { width: 6px; }
+.bri-sidebar::-webkit-scrollbar-track { background: #2a2a2a; }
+.bri-sidebar::-webkit-scrollbar-thumb { background-color: #555; border-radius: 3px; }
+.bri-sidebar-section { margin-bottom: 25px; }
+.bri-sidebar h4 { font-size: 1.1em; color: #fff; margin-bottom: 10px; border-bottom: 1px solid #444; padding-bottom: 5px; font-weight: bold; }
+.bri-sidebar h5 { font-size: 0.9em; color: #aaa; margin-bottom: 10px; text-transform: uppercase; font-weight: 500; }
+.bri-sidebar ul { list-style: none; padding: 0; margin: 0; }
+.bri-sidebar li { margin-bottom: 8px; }
+.bri-sidebar li a { color: #ccc; text-decoration: none; font-size: 0.95em; display: flex; align-items: center; gap: 8px; transition: color 0.2s ease; }
+.bri-sidebar li a i { font-size: 0.7em; color: #777; transition: color 0.2s ease; }
+.bri-sidebar li a:hover { color: #fff; }
+.bri-sidebar li a:hover i { color: #ccc; }
+.bri-sidebar li a.active { color: #fff; font-weight: bold; }
+.bri-sidebar-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+.bri-sidebar-images img { width: 100%; height: auto; border-radius: 3px; opacity: 0.8; transition: opacity 0.2s ease; }
+.bri-sidebar-images img:hover { opacity: 1; }
+
+.bri-content-area {
+    flex-grow: 1;
+    overflow-y: auto; /* Allow content area to scroll */
+    padding: 0; /* Padding applied inside */
+    scrollbar-width: thin;
+    scrollbar-color: #555 #212121;
+}
+.bri-content-area::-webkit-scrollbar { width: 8px; }
+.bri-content-area::-webkit-scrollbar-track { background: #212121; }
+.bri-content-area::-webkit-scrollbar-thumb { background-color: #555; border-radius: 4px; }
+
+.bri-article-header {
+    padding: 30px 40px 20px 40px;
+    border-bottom: 1px solid #444;
+}
+.bri-breadcrumbs { font-size: 0.85em; color: #aaa; margin-bottom: 15px; }
+.bri-breadcrumbs a { color: #7aadee; text-decoration: none; }
+.bri-breadcrumbs a:hover { text-decoration: underline; }
+
+#bri-title-input {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 10px 0;
+    font-family: var(--font-family-britannica);
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%; /* Take full width */
+    box-sizing: border-box;
+    outline: none;
+}
+#bri-title-input:focus {
+    /* Maybe a subtle indication */
+     box-shadow: 0 0 0 2px rgba(122, 173, 238, 0.3);
+     border-radius: 3px;
+}
+
+.bri-dates { font-size: 1em; color: #aaa; margin-bottom: 15px; display: block; }
+.bri-actions { display: flex; gap: 10px; margin-bottom: 15px; }
+.bri-ask-button-fake, .bri-more-actions-button {
+    background-color: #444;
+    color: #ccc;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bri-ask-button-fake:hover, .bri-more-actions-button:hover { background-color: #555; color: #fff; }
+.bri-meta-info { font-size: 0.85em; color: #aaa; margin-bottom: 5px; }
+.bri-meta-info a { color: #7aadee; text-decoration: none; }
+.bri-meta-info a:hover { text-decoration: underline; }
+
+.bri-article-body {
+    display: flex;
+    padding: 30px 40px;
+    gap: 40px;
+}
+.bri-main-column { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; /* Ensure comment section is at bottom */ }
+.bri-right-rail { width: 300px; flex-shrink: 0; }
+
+.bri-main-image { margin: 0 0 20px 0; }
+.bri-main-image img { max-width: 100%; height: auto; border-radius: 4px; display: block; }
+.bri-main-image figcaption { font-size: 0.85em; color: #aaa; text-align: center; margin-top: 8px; }
+.bri-quick-facts { background-color: #2a2a2a; border: 1px solid #444; border-radius: 4px; padding: 20px; margin-bottom: 20px; }
+.bri-quick-facts h4 { font-size: 1.1em; color: #fff; margin: 0 0 15px 0; font-weight: bold; }
+.bri-quick-facts p { margin-bottom: 10px; font-size: 0.95em; }
+.bri-quick-facts strong { font-weight: bold; color: #e0e0e0; }
+.bri-quick-facts a { display: block; margin-top: 15px; }
+.bri-related-content { color: #7aadee; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+.bri-related-content:hover { text-decoration: underline; }
+
+.bri-separator { border: 0; height: 1px; background-color: #444; margin: 20px 0; }
+
+/* Disguised Chat Log Area & Placeholder */
+#bri-chat-log-area {
+    padding: 10px 0;
+    font-family: var(--font-family-britannica); /* Article font */
+    font-size: 16px;
+    line-height: 1.7;
+    color: #e0e0e0;
+    flex-grow: 1; /* Take up space above comment section */
+    overflow-y: auto; /* Allow log itself to scroll if needed, though content area scrolls */
+    scrollbar-width: none; /* Hide scrollbar within log */
+}
+#bri-chat-log-area::-webkit-scrollbar { display: none; } /* Hide scrollbar within log */
+
+#bri-placeholder-content {
+    /* Basic paragraph styling matches article */
+    transition: opacity var(--transition-speed) var(--transition-ease),
+                max-height var(--transition-speed) var(--transition-ease),
+                padding var(--transition-speed) var(--transition-ease),
+                margin var(--transition-speed) var(--transition-ease);
+    max-height: 3000px; /* Generous max height */
+    overflow: hidden;
+}
+#bri-placeholder-content p { margin-bottom: 1em; }
+#bri-placeholder-content strong { font-weight: bold; color: inherit; }
+#bri-placeholder-content.hidden {
+    opacity: 0 !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+}
+
+
+/* Disguised Message Styling - Make them look like regular paragraphs */
+#britannica-disguise .message {
+    max-width: 100%; /* Take full width of column */
+    padding: 0.5em 0; /* Vertical spacing */
+    border-bottom: none; /* Remove message borders */
+    opacity: 1; /* Ensure visible, no fade */
+    transform: none;
+    gap: 0;
+    animation: none;
+    font-family: inherit; /* Inherit from bri-chat-log-area */
+    margin-bottom: 0.5em; /* Space between messages */
+}
+#britannica-disguise .message:last-child { border-bottom: none; margin-bottom: 0; }
+#britannica-disguise .message .avatar { display: none; } /* Hide avatars */
+#britannica-disguise .message .text {
+    padding: 0; /* No padding needed */
+    border-radius: 0; /* No rounded corners */
+    background-color: transparent; /* Transparent background */
+    box-shadow: none; /* No shadow */
+    color: inherit; /* Inherit color */
+    line-height: inherit; /* Inherit line height */
+    font-size: inherit; /* Inherit font size */
+    min-width: 0; /* Reset min-width */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Style user input to look slightly different, maybe like a quote or comment */
+#britannica-disguise .user-message .text {
+    font-style: italic;
+    color: #cacaca; /* Slightly dimmer text for user input */
+    /* Optional: Add a subtle border or background if needed */
+    /* border-left: 3px solid #555; */
+    /* padding-left: 10px; */
+}
+#britannica-disguise .ai-message .text {
+    /* Standard paragraph style, no special styling needed */
+}
+
+/* Markdown styling within Britannica view */
+#britannica-disguise .message .text strong { font-weight: bold; color: inherit; }
+#britannica-disguise .message .text em { font-style: italic; }
+#britannica-disguise .message .text a { color: #7aadee; text-decoration: underline; }
+#britannica-disguise .message .text code:not(pre code) {
+    font-family: Consolas, Monaco, monospace;
+    background-color: #333;
+    color: #eee;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    border: none;
+}
+#britannica-disguise .message .text pre {
+    background-color: #1a1a1a;
+    color: #ccc;
+    border: 1px solid #444;
+    font-size: 0.9em;
+    padding: 10px;
+    margin: 0.5em 0;
+    border-radius: 4px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #555 #1a1a1a;
+}
+#britannica-disguise .message .text pre::-webkit-scrollbar { height: 6px; }
+#britannica-disguise .message .text pre::-webkit-scrollbar-track { background: #1a1a1a; }
+#britannica-disguise .message .text pre::-webkit-scrollbar-thumb { background-color: #555; border-radius: 3px; }
+#britannica-disguise .message .text pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+}
+#britannica-disguise .message .text ul,
+#britannica-disguise .message .text ol {
+    margin: 0.5em 0 0.5em 25px; /* Standard list indentation */
+}
+#britannica-disguise .message .text li {
+    margin-bottom: 0.3em;
+}
+
+
+/* Disguised Comment Input */
+.bri-comment-section {
+    margin-top: auto; /* Pushes to the bottom */
+    border-top: 1px solid #444;
+    padding: 20px 0 10px 0; /* Padding inside the main column */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.bri-comment-section h3 {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: var(--font-family-britannica-sans);
+}
+#bri-comment-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #e0e0e0;
+    padding: 10px 15px;
+    font-size: 14px;
+    min-height: 60px;
+    resize: vertical;
+    margin-bottom: 10px;
+    font-family: var(--font-family-britannica-sans);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+#bri-comment-input:focus { border-color: #666; }
+#bri-comment-send {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+#bri-comment-send:hover { background-color: #666; }
+#bri-comment-send:disabled { background-color: #444; color: #888; cursor: not-allowed; }
+/* === End Britannica Styles === */
+
+/* Utility */
+.hidden {
+    opacity: 0 !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    /* Apply transition only if the element might already have one */
+    /* transition: opacity var(--transition-speed) var(--transition-ease),
+                max-height var(--transition-speed) var(--transition-ease),
+                padding var(--transition-speed) var(--transition-ease),
+                margin var(--transition-speed) var(--transition-ease); */
+}
+
+/* Responsiveness */
+@media (max-width: 1100px) {
+    .bri-right-rail { display: none; }
+    .bri-main-column { padding-right: 0; } /* Remove padding intended for gap */
+    .bri-article-body { gap: 20px; } /* Reduce gap */
+}
+
+@media (max-width: 992px) {
+    .bri-sidebar { display: none; }
+    .bri-content-area { padding: 0; } /* Remove outer padding */
+    .bri-article-header, .bri-article-body { padding: 20px; } /* Add padding back to inner elements */
+    .bri-main-column { padding-right: 0; }
+    .bri-nav { display: none; } /* Hide nav on smaller screens */
+}
+
+@media (max-width: 768px) {
+    /* Combined responsive rules for smaller screens */
+    body { font-size: 15px; }
+
+    /* Default Chat Responsive */
+    #chat-interface #chat-container { padding-top: 60px; max-width: 100%; }
+    #chat-interface #chat-log { padding: 15px; gap: 15px; border-radius: 0; box-shadow: none; }
+    #chat-interface #input-area { padding: 0 10px; border-radius: 0; }
+    #chat-interface #input-elements-wrapper { max-width: 100%; padding: 10px 0; gap: 8px; }
+    #chat-interface #model-selector { height: 38px; padding: 6px 10px; font-size: 0.85em; border-radius: 6px; }
+    #chat-interface .message { max-width: 90%; gap: 8px; }
+    #chat-interface .message .avatar { width: 32px; height: 32px; font-size: 14px; }
+    #chat-interface .message .text { padding: 10px 15px; border-radius: 18px; }
+    #chat-interface #userInput { padding: 10px 15px; max-height: 100px; border-radius: 18px; font-size: 0.95em; min-height: 38px;}
+    #chat-interface #send-button { width: 38px; height: 38px; font-size: 16px; }
+    #chat-interface #initial-state-title { font-size: 1.5em; }
+    #chat-interface #initial-state-examples { grid-template-columns: 1fr; gap: 10px; }
+
+    /* Controls Responsive */
+    #controls-area { top: 10px; right: 10px; gap: 8px;}
+    #new-chat-control { top: 10px; left: 10px; }
+    #new-chat-button, #emergency-button, #theme-toggle { width: 38px; height: 38px; font-size: 16px; }
+
+    /* Britannica Responsive */
+    .bri-header { height: auto; flex-direction: column; padding: 10px; align-items: stretch; }
+    .bri-header-left { justify-content: space-between; width: 100%; margin-bottom: 10px; }
+    .bri-nav { /* Already hidden at 992px, but if shown would need styling */ order: 3; width: 100%; justify-content: center; padding: 10px 0; gap: 15px; flex-wrap: wrap; }
+    .bri-header-right { order: 2; width: 100%; justify-content: space-between; margin-top: 0; gap: 10px; }
+    .bri-search-container { flex-grow: 1; margin-right: 10px; }
+    #britannica-disguise #britannica-search { width: 100%; }
+    .bri-subscribe-button { padding: 6px 10px; font-size: 0.85em; }
+    .bri-login { font-size: 0.85em; }
+
+    .bri-article-header, .bri-article-body { padding: 15px; }
+    .bri-article-body { flex-direction: column; } /* Stack main column and right rail */
+    .bri-right-rail { width: 100%; display: block; margin-top: 20px; } /* Ensure right rail shows if not hidden earlier */
+    #bri-title-input { font-size: 2em; }
+    #bri-chat-log-area { font-size: 15px; }
+    #britannica-disguise .message { padding: 6px 0; }
+    .bri-comment-section { margin-top: 20px; padding: 15px 0 5px 0; }
+    #bri-comment-input { min-height: 50px; }
+}
